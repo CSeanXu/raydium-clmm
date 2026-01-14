@@ -71,6 +71,9 @@ pub enum ErrorCode {
     #[msg("Invalid first tick array account")]
     InvalidFirstTickArrayAccount,
 
+    #[msg("Protocol and fund fees must be zero in this fork")]
+    NonZeroProtocolOrFundFeeNotAllowed,
+
     /// reward errors
     #[msg("Invalid reward index")]
     InvalidRewardIndex,
