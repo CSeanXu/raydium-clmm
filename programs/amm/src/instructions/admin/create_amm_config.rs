@@ -37,6 +37,16 @@ pub fn create_amm_config(
     protocol_fee_rate: u32,
     fund_fee_rate: u32,
 ) -> Result<()> {
+    require_eq!(
+        protocol_fee_rate,
+        0,
+        ErrorCode::NonZeroProtocolOrFundFeeNotAllowed
+    );
+    require_eq!(
+        fund_fee_rate,
+        0,
+        ErrorCode::NonZeroProtocolOrFundFeeNotAllowed
+    );
     let amm_config = ctx.accounts.amm_config.deref_mut();
     amm_config.owner = ctx.accounts.owner.key();
     amm_config.bump = ctx.bumps.amm_config;
